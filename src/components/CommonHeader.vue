@@ -2,12 +2,13 @@
   <div class="header">
     <div class="l-container">
     <!-- 图标展示 -->
-    <el-button size="small">
+    <el-button size="small" @click="handleCollapse">
       <el-icon :size="20">
         <Menu />
       </el-icon>
 
     </el-button>
+    <h3>首页</h3>
   </div>
   <div class="r-container">
     <el-dropdown>
@@ -31,15 +32,22 @@
 
 <script>
 import { defineComponent } from 'vue'
+import {useStore} from 'vuex'
 
 export default defineComponent({
   
   setup() {
+    const store = useStore()
     const getImgSrc = (img) => {
     return  new URL(`../assets/images/${img}`,import.meta.url).href
   };
+  const handleCollapse = function() {
+    store.commit('toggleisCollapse')
+
+  }
     return {
-      getImgSrc
+      getImgSrc,
+      handleCollapse
     }
     
   },
@@ -53,6 +61,21 @@ export default defineComponent({
   justify-content:space-between ;
   align-items: center;
   width: 100%;
+  background: #333;
+  
+  .l-container {
+    display: flex;
+    
+    align-items: center;
+    .el-button {
+      margin:  20px;
+    }
+    h3 {
+      
+      color: #fff;
+    }
+
+  }
   .r-container {
     .user {
       width: 40px;

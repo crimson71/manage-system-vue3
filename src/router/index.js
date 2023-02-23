@@ -4,10 +4,15 @@ const routes = [
   {
     path:'/',
     redirect:'/home',
+    name:'home',
     // 按需导入组件
     component:() => import('../components/views/Main.vue'),
     children:[
-      {path:'home',component:() => import('../components/views/home/Home.vue')}
+      {path:'home',component:() => import('../components/views/home/Home.vue')},
+      {path:'mall',name:'mall',component:() => import('../components/views/mall/Mall.vue')},
+      {path:'user',name:'user',component:() => import('../components/views/user/User.vue')},
+      {path:'page1',name:'page1',component:() => import('../components/views/other/PageOne.vue')},
+      {path:'page2',name:'page2',component:() => import('../components/views/other/PageTwo.vue')},
     ],
   },
 ]

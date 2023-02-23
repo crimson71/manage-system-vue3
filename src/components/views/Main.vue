@@ -35,9 +35,17 @@ export default defineComponent({
 
 
 <style lang="less" scoped>
-.r-container {
-  flex-wrap: wrap;
-}
 
+.common-layout {
+  height: 100%;
+  .el-container {
+    height: 100%;
+    .el-header {
+      padding: 0;
+    }
+
+  }
+  
+}
 
 </style>
