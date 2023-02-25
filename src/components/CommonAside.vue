@@ -46,8 +46,10 @@
 <script>
 import { ref } from 'vue'
 import {useRouter} from 'vue-router'
+import { useStore } from 'vuex'
 export default {
   setup() {
+    const store = useStore()
     const router = useRouter()
     const list = [
       {
@@ -105,6 +107,8 @@ export default {
       router.push({
         name:item.name
       })
+      // 管理面包屑
+      store.commit('selectMenu',item)
     }
     
     return {

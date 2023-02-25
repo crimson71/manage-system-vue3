@@ -18,6 +18,24 @@ export default {
     data:params,
     mock:true
   })
+ },
+
+ getEchartData(params) {
+  return request({
+    url:'/home/getEchartData',
+    methods:'get',
+    data:params,
+    mock:true
+  })
+ } ,
+ getUserData(params) {
+  
+  return request({
+    url:'/user/getuser',
+    methods:'get',
+    mock:false,
+    data:params
+  })
  }
   
 }

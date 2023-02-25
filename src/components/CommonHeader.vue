@@ -1,89 +1,86 @@
 <template>
   <div class="header">
     <div class="l-container">
-    <!-- 图标展示 -->
-    <el-button size="small" @click="handleCollapse">
-      <el-icon :size="20">
-        <Menu />
-      </el-icon>
-
-    </el-button>
-    <h3>首页</h3>
-  </div>
-  <div class="r-container">
-    <el-dropdown>
-    <span class="el-dropdown-link">
-      <img class="user" :src="getImgSrc('avatar.jpg')" alt="">      
-    </span>
-    <template #dropdown>
-      <el-dropdown-menu>
-        <el-dropdown-item>个人中心</el-dropdown-item>
-        <el-dropdown-item>退出</el-dropdown-item>
+      <!-- 图标展示 -->
+      <el-button size="small" @click="handleCollapse">
+        <el-icon :size="20">
+          <Menu />
+        </el-icon>
+      </el-button>
+      <el-breadcrumb separator="/">
         
-      </el-dropdown-menu>
-    </template>
-  </el-dropdown>
-
+        <el-breadcrumb-item v-for="item in current" :key="item.name" :to="item.path" >{{item.label}}</el-breadcrumb-item>
+       
+        </el-breadcrumb
+      >
+    </div>
+    <div class="r-container">
+      <el-dropdown>
+        <span class="el-dropdown-link">
+          <img class="user" :src="getImgSrc('avatar.jpg')" alt="" />
+        </span>
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item>个人中心</el-dropdown-item>
+            <el-dropdown-item>退出</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
+    </div>
   </div>
-
-  </div>
- 
 </template>
 
 <script>
-import { defineComponent } from 'vue'
-import {useStore} from 'vuex'
+import { defineComponent,computed } from 'vue'
+import { useStore } from 'vuex'
 
 export default defineComponent({
-  
   setup() {
     const store = useStore()
     const getImgSrc = (img) => {
-    return  new URL(`../assets/images/${img}`,import.meta.url).href
-  };
-  const handleCollapse = function() {
-    store.commit('toggleisCollapse')
-
-  }
+      return new URL(`../assets/images/${img}`, import.meta.url).href
+    }
+    const handleCollapse = function () {
+      store.commit('toggleisCollapse')
+    }
+    const current = store.state.menuList
+    
     return {
       getImgSrc,
-      handleCollapse
+      handleCollapse,
+      current
     }
-    
-  },
+  }
 })
-</script >
-
+</script>
 
 <style lang="less" scoped>
 .header {
   display: flex;
-  justify-content:space-between ;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   background: #333;
-  
+
   .l-container {
     display: flex;
-    
+
     align-items: center;
     .el-button {
-      margin:  20px;
+      margin: 20px;
     }
-    h3 {
-      
-      color: #fff;
+    :deep(.el-breadcrumb__inner)  {
+      color:#fff;
+      cursor: pointer;
     }
-
   }
   .r-container {
     .user {
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      border:0;
+      border: 0;
     }
   }
 }
-
 </style>
