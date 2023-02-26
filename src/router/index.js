@@ -15,6 +15,7 @@ const routes = [
       {path:'page2',name:'page2',component:() => import('../components/views/other/PageTwo.vue')},
     ],
   },
+  {path:'/login',name:'login',component:() => import('../components/Login.vue')  },
 ]
 
 const router = createRouter({

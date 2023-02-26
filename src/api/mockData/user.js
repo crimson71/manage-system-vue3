@@ -74,7 +74,7 @@ export default {
       sex: sex
     })
     return {
-      code: 20000,
+      code: 200,
       data: {
         message: '添加成功'
       }
@@ -95,7 +95,7 @@ export default {
     } else {
       List = List.filter(u => u.id !== id)
       return {
-        code: 20000,
+        code: 200,
         message: '删除成功'
       }
     }
@@ -135,7 +135,7 @@ export default {
       }
     })
     return {
-      code: 20000,
+      code: 200,
       data: {
         message: '编辑成功'
       }

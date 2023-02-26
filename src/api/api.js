@@ -23,18 +23,44 @@ export default {
  getEchartData(params) {
   return request({
     url:'/home/getEchartData',
-    methods:'get',
+    method:'get',
     data:params,
     mock:true
   })
  } ,
- getUserData(params) {
-  
+ getUserData(params) {  
   return request({
     url:'/user/getuser',
-    methods:'get',
+    method:'get',
     mock:false,
     data:params
+  })
+ },
+
+ addUser(params) {
+  return request({
+    url:'/user/adduser',
+    method:'post',
+    data:params,
+    mock:false
+  })
+ },
+
+ editUser(params) {
+  return request({
+    url:'/user/edituser',
+    method:'post',
+    data:params,
+    mock:false
+  })
+ },
+
+ delUser(params) {
+  return request({
+    url:'/user/deluser',
+    method:'get',
+    data:params,
+    mock:false
   })
  }
   
