@@ -2,10 +2,14 @@
   <router-view></router-view>
 </template>
 
-<script>
-export default {
+<script setup>
+// import { useRouter } from 'vue-router'
+// import { useStore } from 'vuex'
+//     const router = useRouter()
+//     const store = useStore()
+//     store.commit('getMenu',router)
+  
 
-}
 </script>
 
 <style   >

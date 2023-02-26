@@ -62,6 +62,16 @@ export default {
     data:params,
     mock:false
   })
- }
+ },
+//  获取用户对应菜单
+getUserMenu(params) {
+  return request({
+    url:'/permission/getmenu',
+    data:params,
+    method:'get',
+    mock:false
+  })
+
+}
   
 }

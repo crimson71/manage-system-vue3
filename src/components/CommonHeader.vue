@@ -22,7 +22,7 @@
         <template #dropdown>
           <el-dropdown-menu>
             <el-dropdown-item>个人中心</el-dropdown-item>
-            <el-dropdown-item>退出</el-dropdown-item>
+            <el-dropdown-item @click="handelLogout">退出</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -32,11 +32,13 @@
 
 <script>
 import { defineComponent,computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 
 export default defineComponent({
   setup() {
     const store = useStore()
+    const router = useRouter()
     const getImgSrc = (img) => {
       return new URL(`../assets/images/${img}`, import.meta.url).href
     }
@@ -44,11 +46,18 @@ export default defineComponent({
       store.commit('toggleisCollapse')
     }
     const current = store.state.menuList
+
+    const handelLogout = () => {
+      store.commit('cleanMenu')
+      router.push({name:'login'})
+    }
     
     return {
       getImgSrc,
       handleCollapse,
-      current
+      current,
+      handelLogout
+      
     }
   }
 })

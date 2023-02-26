@@ -12,7 +12,7 @@
     style="max-width: 460px"
   >
     <el-form-item label="用户名">
-      <el-input v-model="loginForm.name" placeholder="请输入用户名" />
+      <el-input v-model="loginForm.username" placeholder="请输入用户名" />
     </el-form-item>
     <el-form-item label="密码">
       <el-input type="password" v-model="loginForm.password" placeholder="请输入密码"/>
@@ -28,16 +28,31 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
+import { getCurrentInstance, reactive } from 'vue'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 export default {
   setup() {
+    const {proxy} = getCurrentInstance()
+    const store = useStore()
+    const router = useRouter()
     let loginForm = reactive({
-      name:'',
+      username:'',
       password:''
     })
 
+    const onSubmit = async () => {
+      let res = await proxy.$api.getUserMenu(loginForm)      
+      store.commit('setMenu',res.menu)
+      store.commit('getMenu',router)
+      store.commit('setToken',res.token)
+      router.push({name:'home'})
+
+    }
+
     return {
       loginForm,
+      onSubmit,
     }
   },
 }
