@@ -19,7 +19,7 @@ export default {
             {
               path: '/mall',
               name: 'mall',
-              label: '商品管理',
+              label: '订单管理',
               icon: 'video-play',
               url: 'mall/Mall.vue'
             },
@@ -37,16 +37,9 @@ export default {
                 {
                   path: '/page1',
                   name: 'page1',
-                  label: '页面1',
+                  label: '个人设置',
                   icon: 'setting',
                   url: 'other/PageOne.vue'
-                },
-                {
-                  path: '/page2',
-                  name: 'page2',
-                  label: '页面2',
-                  icon: 'setting',
-                  url: 'other/PageTwo.vue'
                 }
               ]
             }

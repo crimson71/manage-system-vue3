@@ -3,7 +3,7 @@
 import request from "./request";
 export default {
   // home组件左侧表格数据的获取
-  getTableData(params) {
+ getTableData(params){
     return request({
       url:'/home/getDate',
       methods: 'get',
@@ -54,7 +54,6 @@ export default {
     mock:false
   })
  },
-
  delUser(params) {
   return request({
     url:'/user/deluser',
@@ -72,6 +71,39 @@ getUserMenu(params) {
     mock:false
   })
 
-}
+},
+getOrderList(params) {
+  return request({
+    url:'/order/getorderlist',
+    data:params,
+    method:'get',
+    mock:false
+  })
+},
+editOrder(params) {
+  return request({
+    url:'/order/editorder',
+    data:params,
+    method:'post',
+    mock:false
+
+  })
+ },
+ getProfile() {
+  return request({
+    url:'/profile/getprofile',
+    method:'get',
+    mock:false
+
+  })
+ },
+ editProfile(params) {
+  return request({
+    url:'/profile/editprofile',
+    method:'post',
+    mock:false,
+    data:params
+  })
+ }
   
 }
